@@ -1,7 +1,13 @@
 
 plugins {
-    id("net.ivoa.vo-dml.vodmltools") version "0.3.10"
+    id("net.ivoa.vo-dml.vodmltools") version "0.5.10"
+    `maven-publish`
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    signing
 }
+
+group = "org.javastro.ivoa.dm"
+version = "1.0-SNAPSHOT"
 
 vodml {
     vodmlDir.set(file("schema"))
@@ -9,7 +15,7 @@ vodml {
 }
 
 dependencies {
-    implementation("org.javastro.ivoa.vo-dml:ivoa-base:1.0-SNAPSHOT") //reusing the "standard" base library
+    api("org.javastro.ivoa.vo-dml:ivoa-base:1.0-SNAPSHOT") //reusing the "standard" base library
     // Use JUnit Jupiter for testing - only necessary if you want to write unit tests!
     implementation("org.slf4j:slf4j-api:1.7.32")
     testRuntimeOnly("ch.qos.logback:logback-classic:1.2.3")
