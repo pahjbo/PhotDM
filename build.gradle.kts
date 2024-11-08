@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "org.javastro.ivoa.dm"
-version = "1.0-SNAPSHOT"
+version = "1.1-SNAPSHOT"
 
 vodml {
     vodmlDir.set(file("schema"))
@@ -27,3 +27,11 @@ tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
+
